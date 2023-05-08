@@ -3030,11 +3030,10 @@ function App() {
 }
 _s(App, "pp8dgvNSSMbDzJxCvHKW9MRiTPw=");
 _c = App;
-const container = (0, _client.createRoot)(document.getElementById("app"));
-container.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
+(0, _client.createRoot)(document.getElementById("app")).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/app.js",
-    lineNumber: 71,
-    columnNumber: 18
+    lineNumber: 70,
+    columnNumber: 51
 }, undefined));
 var _c;
 $RefreshReg$(_c, "App");
@@ -33833,10 +33832,9 @@ var _react = require("react");
 var _s = $RefreshSig$();
 function ResultsContainer({ data  }) {
     _s();
-    const [audio, setAudio] = (0, _react.useState)("");
     const audioRef = (0, _react.useRef)(null);
     function playAudio(url) {
-        setAudio(url);
+        audioRef.current.src = url;
         audioRef.current.play();
     }
     const firstLetters = data.firstLetters.nodes;
@@ -33845,18 +33843,18 @@ function ResultsContainer({ data  }) {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("audio", {
                 id: "audioPlayer",
-                src: audio,
+                src: "",
                 ref: audioRef
             }, void 0, false, {
                 fileName: "src/Presentation/ResultsContainer.jsx",
-                lineNumber: 15,
+                lineNumber: 14,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _currentLetterDefault.default), {
                 letter: firstLetters[0]
             }, void 0, false, {
                 fileName: "src/Presentation/ResultsContainer.jsx",
-                lineNumber: 16,
+                lineNumber: 15,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wordGridDefault.default), {
@@ -33864,18 +33862,18 @@ function ResultsContainer({ data  }) {
                 playAudio: playAudio
             }, void 0, false, {
                 fileName: "src/Presentation/ResultsContainer.jsx",
-                lineNumber: 17,
+                lineNumber: 16,
                 columnNumber: 4
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/Presentation/ResultsContainer.jsx",
-        lineNumber: 14,
+        lineNumber: 13,
         columnNumber: 3
     }, this);
 }
 exports.default = ResultsContainer;
-_s(ResultsContainer, "avhTbyWISa6CI/U14mtwloLqRIg=");
+_s(ResultsContainer, "0sm4EU6wFifmHvgu8ujVUSp82DM=");
 _c = ResultsContainer;
 var _c;
 $RefreshReg$(_c, "ResultsContainer");
