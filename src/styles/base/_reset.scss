@@ -1,0 +1,54 @@
+@use '../abstracts/variables' as v;
+
+:root {
+	--color-primary: #{v.$color-primary};
+	--color-primary--light: #{v.$color-primary--light};
+	--color-black: #{v.$color-black};
+	--color-white: #{v.$color-white};
+	--font-family--headings: #{v.$font-family--headings};
+}
+::selection {
+	color: #fff;
+	background-color: var(--color-primary);
+	text-shadow: none;
+}
+:focus {
+	outline: none;
+	outline-style: none;
+	outline-width: 0;
+}
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+html {
+	scroll-behavior: auto !important;
+	font-size: 62.5%;
+
+	body {
+		position: relative;
+		word-break: break-word;
+		overflow-x: hidden;
+		font-size: 1.6rem;
+		background-color: #f4f3f3;
+		& > * {
+			position: relative;
+			z-index: 2;
+			font-size: 1em;
+		}
+	}
+}
+
+i.fas.fa-play-circle.fa-3x {
+	color: v.$color-primary;
+}
+pre {
+	background-color: var(--color-primary--light);
+}
+
+#content {
+	min-height: 600px;
+}

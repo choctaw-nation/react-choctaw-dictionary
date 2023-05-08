@@ -1,0 +1,11 @@
+.dark-mode-switch.form-switch .form-check-input,
+.dark-mode-switch.form-switch .form-check-input:focus {
+	// background-image: url(
+	// 	data:image/svg + xml,
+	// 	<svgxmlns='http://www.w3.org/2000/svg'viewBox='-4 -4 8 8'><circler='3'fill='rgba%280, 0, 0, 0.25%29'/></svg>
+	// );
+}
+.color-theme-toggle {
+	display: flex;
+	flex-direction: column;
+}

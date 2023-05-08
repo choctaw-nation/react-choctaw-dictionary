@@ -1,0 +1,61 @@
+.header {
+	display: flex;
+	align-items: center;
+	background-color: var(--color-primary--light);
+	position: relative;
+	z-index: 1;
+	.logo {
+		display: inline-block;
+		background-color: var(--color-primary);
+		margin-right: auto;
+		position: relative;
+		overflow: hidden;
+		width: clamp(150px, 12vw, 15vw);
+		figure {
+			margin: 0;
+		}
+		&__img {
+			height: 7em;
+			margin: 1rem 2rem;
+		}
+		&__diamond {
+			position: absolute;
+			top: -11rem;
+			right: -11rem;
+			z-index: -1;
+			$size: 18rem;
+			width: $size;
+			height: $size;
+			background-color: var(--color-primary);
+			margin: 80px auto;
+			border: 20px solid var(--color-primary--light);
+			outline: 3px solid var(--color-primary);
+			transform: rotate(-45deg);
+		}
+	}
+	&__title {
+		display: inline-block;
+		margin: 0 auto;
+		color: var(--color-primary);
+		font-family: var(--font-family--headings);
+		font-size: 2.4em;
+	}
+}
+
+.about-title-diamond {
+	position: absolute;
+	top: -99px;
+	right: -66px;
+	z-index: -1;
+	width: 140px;
+	height: 140px;
+	background: var(--color-primary);
+	margin: 80px auto;
+	border: 20px solid var(--color-primary--light);
+	outline: 3px solid var(--color-primary);
+	transform: rotate(-45deg);
+}
+.about-title-right {
+	background-color: var(--color-primary--light);
+	z-index: -2;
+}
