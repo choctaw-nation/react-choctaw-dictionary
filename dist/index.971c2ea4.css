@@ -54,6 +54,10 @@ pre {
   min-height: 600px;
 }
 
+#app .container {
+  min-height: 132rem;
+}
+
 span.h2.text-center.w-100.font-gil {
   font-weight: bold;
 }
@@ -168,7 +172,7 @@ ul.search-items li:nth-child(3), ul.search-items li:nth-child(4) {
 }
 
 .secondary-nav {
-  border-bottom: 5px solid var(--color-primary);
+  border-bottom: 5px solid #1c5c87;
 }
 
 .secondary-nav button {
@@ -184,8 +188,30 @@ ul.search-items li:nth-child(3), ul.search-items li:nth-child(4) {
 
 .menu-alphabet-container ul {
   grid-template-columns: repeat(auto-fit, 40px);
+  place-content: center;
+  column-gap: 5px;
+  margin: 0;
+  padding: 0;
   list-style: none;
   display: grid;
+}
+
+.menu-alphabet-container li {
+  display: inline-block;
+}
+
+.menu-alphabet-container li.selected {
+  background-color: #1c5c87;
+}
+
+.menu-alphabet-container li.selected button {
+  color: #fff;
+}
+
+.menu-alphabet-container li button {
+  width: 100%;
+  background: none;
+  display: block;
 }
 
 .color-theme-toggle {

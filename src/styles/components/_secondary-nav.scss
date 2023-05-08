@@ -1,3 +1,4 @@
+@use '../abstracts/variables' as v;
 .secondary-nav {
 	button {
 		border: none;
@@ -8,12 +9,30 @@
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 	}
-	border-bottom: 5px solid var(--color-primary);
+	border-bottom: 5px solid v.$color-primary;
 }
 .menu-alphabet-container {
 	ul {
 		list-style: none;
 		display: grid;
 		grid-template-columns: repeat(auto-fit, max(40px));
+		place-content: center;
+		column-gap: 5px;
+		margin: 0;
+		padding: 0;
+	}
+	li {
+		display: inline-block;
+		&.selected {
+			background-color: v.$color-primary;
+			button {
+				color: white;
+			}
+		}
+		button {
+			width: 100%;
+			display: block;
+			background: none;
+		}
 	}
 }

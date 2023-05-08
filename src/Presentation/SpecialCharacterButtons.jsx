@@ -1,6 +1,9 @@
 export function SpecialCharacter({ character }) {
 	return (
-		<button aria-label="Choctaw Character" className="addLetterButton">
+		<button
+			aria-label="Choctaw Character"
+			className="addLetterButton"
+			onClick={(ev) => ev.preventDefault()}>
 			{character}
 		</button>
 	);

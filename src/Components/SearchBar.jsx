@@ -37,21 +37,6 @@ export function SearchBar({ alphabet }) {
 						<SpecialCharacter character={character} key={character} />
 					))}
 				</li>
-				{/*<li className="sf-field-taxonomy-first_letter">
-					<label>
-						<select
-							name="_sft_first_letter[]"
-							className="sf-input-select form-select"
-							title="">
-							<option className="sf-level-0 sf-item-0" value="">
-								All First Letters
-							</option>
-							{alphabet.map((letter) => (
-								<FirstLetter letter={letter} key={letter} />
-							))}
-						</select>
-					</label>
-							</li>*/}
 			</ul>
 		</form>
 	);

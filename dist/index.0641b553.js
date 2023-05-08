@@ -2940,7 +2940,7 @@ var _resultsContainerDefault = parcelHelpers.interopDefault(_resultsContainer);
 var _s = $RefreshSig$();
 const query = {
     query: `query {
-  firstLetters {
+  firstLetters(first:27) {
     nodes {
       count
       name
@@ -2976,6 +2976,8 @@ function App() {
             nodes: []
         }
     });
+    const [alphabet, setAlphabet] = (0, _react.useState)();
+    const [selectedLetter, setSelectedLetter] = (0, _react.useState)();
     (0, _react.useEffect)(()=>{
         const res = fetch("https://choctawlangstg.wpengine.com/graphql", {
             method: "Post",
@@ -2985,8 +2987,10 @@ function App() {
             body: JSON.stringify(query)
         }).then((data)=>{
             data.json().then((body)=>{
-                setIsLoading(false);
                 setData(body.data);
+                setSelectedLetter(body.data.firstLetters.nodes[0]);
+                setAlphabet(body.data.firstLetters.nodes.filter((node)=>null !== node.count).map((node)=>node.name));
+                setIsLoading(false);
             });
         }).catch((err)=>console.error(err));
     }, []);
@@ -2994,45 +2998,51 @@ function App() {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _header.Header), {}, void 0, false, {
                 fileName: "src/app.js",
-                lineNumber: 61,
+                lineNumber: 69,
                 columnNumber: 4
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _secondaryNav.SecondaryNav), {}, void 0, false, {
+            !isLoading && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _secondaryNav.SecondaryNav), {
+                selectedLetter: selectedLetter,
+                setSelectedLetter: setSelectedLetter,
+                data: data,
+                alphabet: alphabet
+            }, void 0, false, {
                 fileName: "src/app.js",
-                lineNumber: 62,
-                columnNumber: 4
+                lineNumber: 71,
+                columnNumber: 5
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "container",
                 children: isLoading ? "Loading..." : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _resultsContainerDefault.default), {
-                    data: data
+                    data: data,
+                    selectedLetter: selectedLetter
                 }, void 0, false, {
                     fileName: "src/app.js",
-                    lineNumber: 64,
-                    columnNumber: 33
+                    lineNumber: 82,
+                    columnNumber: 6
                 }, this)
             }, void 0, false, {
                 fileName: "src/app.js",
-                lineNumber: 63,
+                lineNumber: 78,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footer.Footer), {}, void 0, false, {
                 fileName: "src/app.js",
-                lineNumber: 66,
+                lineNumber: 85,
                 columnNumber: 4
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/app.js",
-        lineNumber: 60,
+        lineNumber: 68,
         columnNumber: 3
     }, this);
 }
-_s(App, "pp8dgvNSSMbDzJxCvHKW9MRiTPw=");
+_s(App, "ZZ0P01nycBb+cD+SyVao3Dtk1MA=");
 _c = App;
 (0, _client.createRoot)(document.getElementById("app")).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/app.js",
-    lineNumber: 70,
+    lineNumber: 89,
     columnNumber: 51
 }, undefined));
 var _c;
@@ -27659,67 +27669,41 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _searchBar = require("../Components/SearchBar");
 var _alphabet = require("../Components/Alphabet");
 var _colorToggle = require("../Components/ColorToggle");
-const alphabet = [
-    "A",
-    "Ʋ",
-    "B",
-    "Ch",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y"
-];
-function SecondaryNav() {
+function SecondaryNav({ alphabet , selectedLetter , setSelectedLetter , data  }) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "secondary-nav container-fluid pt-3",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "row",
             children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _searchBar.SearchBar), {
-                    alphabet: alphabet
-                }, void 0, false, {
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _searchBar.SearchBar), {}, void 0, false, {
                     fileName: "src/Presentation/SecondaryNav.jsx",
-                    lineNumber: 35,
+                    lineNumber: 14,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _alphabet.AlphabetMenu), {
-                    alphabet: alphabet
+                    alphabet: alphabet,
+                    selectedLetter: selectedLetter,
+                    setSelectedLetter: setSelectedLetter,
+                    data: data
                 }, void 0, false, {
                     fileName: "src/Presentation/SecondaryNav.jsx",
-                    lineNumber: 36,
+                    lineNumber: 15,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colorToggle.ColorThemeToggle), {}, void 0, false, {
                     fileName: "src/Presentation/SecondaryNav.jsx",
-                    lineNumber: 37,
+                    lineNumber: 21,
                     columnNumber: 5
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/Presentation/SecondaryNav.jsx",
-            lineNumber: 34,
+            lineNumber: 13,
             columnNumber: 4
         }, this)
     }, void 0, false, {
         fileName: "src/Presentation/SecondaryNav.jsx",
-        lineNumber: 33,
+        lineNumber: 12,
         columnNumber: 3
     }, this);
 }
@@ -27869,6 +27853,7 @@ function SpecialCharacter({ character  }) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
         "aria-label": "Choctaw Character",
         className: "addLetterButton",
+        onClick: (ev)=>ev.preventDefault(),
         children: character
     }, void 0, false, {
         fileName: "src/Presentation/SpecialCharacterButtons.jsx",
@@ -27883,7 +27868,7 @@ function FirstLetter({ letter  }) {
         children: letter
     }, void 0, false, {
         fileName: "src/Presentation/SpecialCharacterButtons.jsx",
-        lineNumber: 11,
+        lineNumber: 14,
         columnNumber: 3
     }, this);
 }
@@ -27908,7 +27893,8 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "AlphabetMenu", ()=>AlphabetMenu);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-function AlphabetMenu({ alphabet  }) {
+function AlphabetMenu({ alphabet , selectedLetter , setSelectedLetter , data  }) {
+    console.log(selectedLetter);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "menu-alphabet-container",
         children: [
@@ -27917,34 +27903,39 @@ function AlphabetMenu({ alphabet  }) {
                 children: "Search by First Letter"
             }, void 0, false, {
                 fileName: "src/Components/Alphabet.jsx",
-                lineNumber: 4,
+                lineNumber: 10,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
                 id: "menu-alphabet-1",
                 className: "menu",
                 children: alphabet.map((letter)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        className: letter === selectedLetter.name ? "selected" : "",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            onClick: ()=>{
+                                const choice = data.firstLetters.nodes.filter((node)=>letter === node.name);
+                                setSelectedLetter(choice[0]);
+                            },
                             children: letter
                         }, void 0, false, {
                             fileName: "src/Components/Alphabet.jsx",
-                            lineNumber: 8,
+                            lineNumber: 16,
                             columnNumber: 7
                         }, this)
                     }, letter, false, {
                         fileName: "src/Components/Alphabet.jsx",
-                        lineNumber: 7,
+                        lineNumber: 13,
                         columnNumber: 6
                     }, this))
             }, void 0, false, {
                 fileName: "src/Components/Alphabet.jsx",
-                lineNumber: 5,
+                lineNumber: 11,
                 columnNumber: 4
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/Components/Alphabet.jsx",
-        lineNumber: 3,
+        lineNumber: 9,
         columnNumber: 3
     }, this);
 }
@@ -33830,14 +33821,13 @@ var _wordGrid = require("./WordGrid");
 var _wordGridDefault = parcelHelpers.interopDefault(_wordGrid);
 var _react = require("react");
 var _s = $RefreshSig$();
-function ResultsContainer({ data  }) {
+function ResultsContainer({ selectedLetter  }) {
     _s();
     const audioRef = (0, _react.useRef)(null);
     function playAudio(url) {
         audioRef.current.src = url;
         audioRef.current.play();
     }
-    const firstLetters = data.firstLetters.nodes;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "results",
         children: [
@@ -33847,28 +33837,28 @@ function ResultsContainer({ data  }) {
                 ref: audioRef
             }, void 0, false, {
                 fileName: "src/Presentation/ResultsContainer.jsx",
-                lineNumber: 14,
+                lineNumber: 13,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _currentLetterDefault.default), {
-                letter: firstLetters[0]
+                letter: selectedLetter
             }, void 0, false, {
                 fileName: "src/Presentation/ResultsContainer.jsx",
-                lineNumber: 15,
+                lineNumber: 14,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wordGridDefault.default), {
-                words: firstLetters[0].words,
+                words: selectedLetter.words,
                 playAudio: playAudio
             }, void 0, false, {
                 fileName: "src/Presentation/ResultsContainer.jsx",
-                lineNumber: 16,
+                lineNumber: 15,
                 columnNumber: 4
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/Presentation/ResultsContainer.jsx",
-        lineNumber: 13,
+        lineNumber: 12,
         columnNumber: 3
     }, this);
 }

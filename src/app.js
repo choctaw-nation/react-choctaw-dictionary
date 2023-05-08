@@ -9,7 +9,7 @@ import { SecondaryNav } from './Presentation/SecondaryNav';
 import ResultsContainer from './Presentation/ResultsContainer';
 const query = {
 	query: `query {
-  firstLetters {
+  firstLetters(first:27) {
     nodes {
       count
       name
@@ -41,6 +41,8 @@ const query = {
 function App() {
 	const [isLoading, setIsLoading] = useState(true);
 	const [data, setData] = useState({ firstLetters: { nodes: [] } });
+	const [alphabet, setAlphabet] = useState();
+	const [selectedLetter, setSelectedLetter] = useState();
 	useEffect(() => {
 		const res = fetch('https://choctawlangstg.wpengine.com/graphql', {
 			method: 'Post',
@@ -49,8 +51,14 @@ function App() {
 		})
 			.then((data) => {
 				data.json().then((body) => {
-					setIsLoading(false);
 					setData(body.data);
+					setSelectedLetter(body.data.firstLetters.nodes[0]);
+					setAlphabet(
+						body.data.firstLetters.nodes
+							.filter((node) => null !== node.count)
+							.map((node) => node.name),
+					);
+					setIsLoading(false);
 				});
 			})
 			.catch((err) => console.error(err));
@@ -59,9 +67,20 @@ function App() {
 	return (
 		<div>
 			<Header />
-			<SecondaryNav />
+			{!isLoading && (
+				<SecondaryNav
+					selectedLetter={selectedLetter}
+					setSelectedLetter={setSelectedLetter}
+					data={data}
+					alphabet={alphabet}
+				/>
+			)}
 			<div className="container">
-				{isLoading ? 'Loading...' : <ResultsContainer data={data} />}
+				{isLoading ? (
+					'Loading...'
+				) : (
+					<ResultsContainer data={data} selectedLetter={selectedLetter} />
+				)}
 			</div>
 			<Footer />
 		</div>
