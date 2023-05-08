@@ -8,6 +8,7 @@
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 	}
+	border-bottom: 5px solid var(--color-primary);
 }
 .menu-alphabet-container {
 	ul {

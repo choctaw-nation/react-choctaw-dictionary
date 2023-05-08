@@ -6,3 +6,7 @@
 @use './components/search-bar';
 @use './components/secondary-nav';
 @use './components/color-theme-toggle';
+@use './components/current-letter';
+@use './components/word-card';
+// Layouts
+@use './layouts/word-grid';

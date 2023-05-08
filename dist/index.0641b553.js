@@ -2926,17 +2926,17 @@ $parcel$ReactRefreshHelpers$f79a.prelude(module);
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _mainScss = require("./styles/main.scss");
+var _bootstrapMinCss = require("bootstrap/dist/css/bootstrap.min.css");
+var _bootstrap = require("bootstrap/dist/js/bootstrap");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _client = require("react-dom/client");
 var _footer = require("./Presentation/Footer");
 var _header = require("./Presentation/Header");
 var _secondaryNav = require("./Presentation/SecondaryNav");
-var _mainScss = require("./styles/main.scss");
-var _bootstrapMinCss = require("bootstrap/dist/css/bootstrap.min.css");
-var _bootstrap = require("bootstrap/dist/js/bootstrap");
-var _wordsContainer = require("./Presentation/WordsContainer");
-var _wordsContainerDefault = parcelHelpers.interopDefault(_wordsContainer);
+var _resultsContainer = require("./Presentation/ResultsContainer");
+var _resultsContainerDefault = parcelHelpers.interopDefault(_resultsContainer);
 var _s = $RefreshSig$();
 const query = {
     query: `query {
@@ -2971,7 +2971,11 @@ const query = {
 function App() {
     _s();
     const [isLoading, setIsLoading] = (0, _react.useState)(true);
-    const [data, setData] = (0, _react.useState)();
+    const [data, setData] = (0, _react.useState)({
+        firstLetters: {
+            nodes: []
+        }
+    });
     (0, _react.useEffect)(()=>{
         const res = fetch("https://choctawlangstg.wpengine.com/graphql", {
             method: "Post",
@@ -2998,9 +3002,15 @@ function App() {
                 lineNumber: 62,
                 columnNumber: 4
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wordsContainerDefault.default), {
-                isLoading: isLoading,
-                data: data
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "container",
+                children: isLoading ? "Loading..." : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _resultsContainerDefault.default), {
+                    data: data
+                }, void 0, false, {
+                    fileName: "src/app.js",
+                    lineNumber: 64,
+                    columnNumber: 33
+                }, this)
             }, void 0, false, {
                 fileName: "src/app.js",
                 lineNumber: 63,
@@ -3008,7 +3018,7 @@ function App() {
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footer.Footer), {}, void 0, false, {
                 fileName: "src/app.js",
-                lineNumber: 64,
+                lineNumber: 66,
                 columnNumber: 4
             }, this)
         ]
@@ -3018,12 +3028,12 @@ function App() {
         columnNumber: 3
     }, this);
 }
-_s(App, "e065B+SzM+IYLklGIdMS8eW3WtE=");
+_s(App, "pp8dgvNSSMbDzJxCvHKW9MRiTPw=");
 _c = App;
 const container = (0, _client.createRoot)(document.getElementById("app"));
 container.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/app.js",
-    lineNumber: 69,
+    lineNumber: 71,
     columnNumber: 18
 }, undefined));
 var _c;
@@ -3034,7 +3044,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","./Presentation/Header":"bcIgo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Presentation/Footer":"eM7l0","./Presentation/SecondaryNav":"7G5jL","./styles/main.scss":"bo7w8","bootstrap/dist/css/bootstrap.min.css":"i5LP7","bootstrap/dist/js/bootstrap":"9AxfY","./Presentation/WordsContainer":"3LpIe"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","./Presentation/Header":"bcIgo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Presentation/Footer":"eM7l0","./Presentation/SecondaryNav":"7G5jL","./styles/main.scss":"bo7w8","bootstrap/dist/css/bootstrap.min.css":"i5LP7","bootstrap/dist/js/bootstrap":"9AxfY","./Presentation/ResultsContainer":"c9n6F"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("5185e67b466eae4e");
 
@@ -33805,33 +33815,270 @@ var createPopper = /*#__PURE__*/ (0, _createPopperJs.popperGenerator)({
     defaultModifiers: defaultModifiers
 }); // eslint-disable-next-line import/no-unused-modules
 
-},{"./createPopper.js":"cHuNp","./modifiers/eventListeners.js":"hBKsL","./modifiers/popperOffsets.js":"6I679","./modifiers/computeStyles.js":"gDlm2","./modifiers/applyStyles.js":"4iMn4","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3LpIe":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$d893 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"./createPopper.js":"cHuNp","./modifiers/eventListeners.js":"hBKsL","./modifiers/popperOffsets.js":"6I679","./modifiers/computeStyles.js":"gDlm2","./modifiers/applyStyles.js":"4iMn4","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"c9n6F":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$e85b = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$d893.prelude(module);
+$parcel$ReactRefreshHelpers$e85b.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-function WordsContainer({ data , isLoading  }) {
+var _currentLetter = require("./CurrentLetter");
+var _currentLetterDefault = parcelHelpers.interopDefault(_currentLetter);
+var _wordGrid = require("./WordGrid");
+var _wordGridDefault = parcelHelpers.interopDefault(_wordGrid);
+var _react = require("react");
+var _s = $RefreshSig$();
+function ResultsContainer({ data  }) {
+    _s();
+    const [audio, setAudio] = (0, _react.useState)("");
+    const audioRef = (0, _react.useRef)(null);
+    function playAudio(url) {
+        setAudio(url);
+        audioRef.current.play();
+    }
     const firstLetters = data.firstLetters.nodes;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "container",
-        children: isLoading ? "Loading..." : "Words Container"
+        className: "results",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("audio", {
+                id: "audioPlayer",
+                src: audio,
+                ref: audioRef
+            }, void 0, false, {
+                fileName: "src/Presentation/ResultsContainer.jsx",
+                lineNumber: 15,
+                columnNumber: 4
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _currentLetterDefault.default), {
+                letter: firstLetters[0]
+            }, void 0, false, {
+                fileName: "src/Presentation/ResultsContainer.jsx",
+                lineNumber: 16,
+                columnNumber: 4
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wordGridDefault.default), {
+                words: firstLetters[0].words,
+                playAudio: playAudio
+            }, void 0, false, {
+                fileName: "src/Presentation/ResultsContainer.jsx",
+                lineNumber: 17,
+                columnNumber: 4
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/Presentation/ResultsContainer.jsx",
+        lineNumber: 14,
+        columnNumber: 3
+    }, this);
+}
+exports.default = ResultsContainer;
+_s(ResultsContainer, "avhTbyWISa6CI/U14mtwloLqRIg=");
+_c = ResultsContainer;
+var _c;
+$RefreshReg$(_c, "ResultsContainer");
+
+  $parcel$ReactRefreshHelpers$e85b.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","./CurrentLetter":"hEhDr","./WordGrid":"gQHh4","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq"}],"hEhDr":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$9633 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$9633.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+function CurrentLetter({ letter  }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "current-letter col-12 pb-3",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "current-letter__diamond"
+            }, void 0, false, {
+                fileName: "src/Presentation/CurrentLetter.jsx",
+                lineNumber: 4,
+                columnNumber: 4
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                className: "current-letter__letter",
+                children: letter.name
+            }, void 0, false, {
+                fileName: "src/Presentation/CurrentLetter.jsx",
+                lineNumber: 5,
+                columnNumber: 4
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                className: "current-letter__count text-center text-dark pt-3",
+                children: [
+                    letter.count,
+                    " Results"
+                ]
+            }, void 0, true, {
+                fileName: "src/Presentation/CurrentLetter.jsx",
+                lineNumber: 6,
+                columnNumber: 4
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/Presentation/CurrentLetter.jsx",
+        lineNumber: 3,
+        columnNumber: 3
+    }, this);
+}
+exports.default = CurrentLetter;
+_c = CurrentLetter;
+var _c;
+$RefreshReg$(_c, "CurrentLetter");
+
+  $parcel$ReactRefreshHelpers$9633.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gQHh4":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$55d4 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$55d4.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _wordCard = require("./WordCard");
+var _wordCardDefault = parcelHelpers.interopDefault(_wordCard);
+function WordGrid({ words , playAudio  }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "word-grid",
+        children: words.nodes.map((word)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wordCardDefault.default), {
+                word: word.title,
+                fields: word.words_fields,
+                playAudio: playAudio
+            }, word.wordId, false, {
+                fileName: "src/Presentation/WordGrid.jsx",
+                lineNumber: 7,
+                columnNumber: 5
+            }, this))
     }, void 0, false, {
-        fileName: "src/Presentation/WordsContainer.jsx",
+        fileName: "src/Presentation/WordGrid.jsx",
+        lineNumber: 5,
+        columnNumber: 3
+    }, this);
+}
+exports.default = WordGrid;
+_c = WordGrid;
+var _c;
+$RefreshReg$(_c, "WordGrid");
+
+  $parcel$ReactRefreshHelpers$55d4.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","./WordCard":"j2OKT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"j2OKT":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$334d = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$334d.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+function WordCard({ word , fields , playAudio  }) {
+    console.log("rendered");
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "word-card",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "word-card__text",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                        className: "word-card__text--title",
+                        children: [
+                            word,
+                            fields.partOfLanguage && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                className: "word-card__text--part-of-language",
+                                children: [
+                                    " ",
+                                    "(",
+                                    fields.partOfLanguage,
+                                    ")"
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/Presentation/WordCard.jsx",
+                                lineNumber: 9,
+                                columnNumber: 7
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/Presentation/WordCard.jsx",
+                        lineNumber: 6,
+                        columnNumber: 5
+                    }, this),
+                    fields.definitions && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        className: "word-card__text--definition",
+                        children: fields.definitions[0].definition
+                    }, void 0, false, {
+                        fileName: "src/Presentation/WordCard.jsx",
+                        lineNumber: 16,
+                        columnNumber: 6
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/Presentation/WordCard.jsx",
+                lineNumber: 5,
+                columnNumber: 4
+            }, this),
+            fields.audioFile && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "word-card__button",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    "aria-label": "Audio button for choctaw word",
+                    value: fields.audioFile.mediaItemUrl,
+                    className: "audio-button btn btn-link",
+                    onClick: ()=>{
+                        playAudio(fields.audioFile.mediaItemUrl);
+                    },
+                    children: [
+                        "Play",
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("i", {
+                            className: "fas fa-play-circle fa-3x"
+                        }, void 0, false, {
+                            fileName: "src/Presentation/WordCard.jsx",
+                            lineNumber: 31,
+                            columnNumber: 7
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/Presentation/WordCard.jsx",
+                    lineNumber: 23,
+                    columnNumber: 6
+                }, this)
+            }, void 0, false, {
+                fileName: "src/Presentation/WordCard.jsx",
+                lineNumber: 22,
+                columnNumber: 5
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/Presentation/WordCard.jsx",
         lineNumber: 4,
         columnNumber: 3
     }, this);
 }
-exports.default = WordsContainer;
-_c = WordsContainer;
+exports.default = WordCard;
+_c = WordCard;
 var _c;
-$RefreshReg$(_c, "WordsContainer");
+$RefreshReg$(_c, "WordCard");
 
-  $parcel$ReactRefreshHelpers$d893.postlude(module);
+  $parcel$ReactRefreshHelpers$334d.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
