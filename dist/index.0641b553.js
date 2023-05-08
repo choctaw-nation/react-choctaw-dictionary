@@ -2960,7 +2960,6 @@ const query = {
             exampleSentenceTranslation
             partOfLanguage
             pronunciation
-            wordId
           }
         }
       }
@@ -2998,7 +2997,7 @@ function App() {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _header.Header), {}, void 0, false, {
                 fileName: "src/app.js",
-                lineNumber: 69,
+                lineNumber: 68,
                 columnNumber: 4
             }, this),
             !isLoading && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _secondaryNav.SecondaryNav), {
@@ -3008,7 +3007,7 @@ function App() {
                 alphabet: alphabet
             }, void 0, false, {
                 fileName: "src/app.js",
-                lineNumber: 71,
+                lineNumber: 70,
                 columnNumber: 5
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -3018,23 +3017,23 @@ function App() {
                     selectedLetter: selectedLetter
                 }, void 0, false, {
                     fileName: "src/app.js",
-                    lineNumber: 82,
+                    lineNumber: 81,
                     columnNumber: 6
                 }, this)
             }, void 0, false, {
                 fileName: "src/app.js",
-                lineNumber: 78,
+                lineNumber: 77,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footer.Footer), {}, void 0, false, {
                 fileName: "src/app.js",
-                lineNumber: 85,
+                lineNumber: 84,
                 columnNumber: 4
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/app.js",
-        lineNumber: 68,
+        lineNumber: 67,
         columnNumber: 3
     }, this);
 }
@@ -3042,7 +3041,7 @@ _s(App, "ZZ0P01nycBb+cD+SyVao3Dtk1MA=");
 _c = App;
 (0, _client.createRoot)(document.getElementById("app")).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/app.js",
-    lineNumber: 89,
+    lineNumber: 88,
     columnNumber: 51
 }, undefined));
 var _c;
@@ -33824,46 +33823,57 @@ var _s = $RefreshSig$();
 function ResultsContainer({ selectedLetter  }) {
     _s();
     const audioRef = (0, _react.useRef)(null);
+    const [progress, setProgress] = (0, _react.useState)(0);
+    function handleTimeUpdate() {
+        const audio = audioRef.current;
+        const progress = audio.currentTime / audio.duration * 100;
+        setProgress(progress);
+    }
     function playAudio(url) {
         audioRef.current.src = url;
         audioRef.current.play();
     }
+    (0, _react.useEffect)(()=>console.log(progress), [
+        progress
+    ]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "results",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("audio", {
                 id: "audioPlayer",
                 src: "",
-                ref: audioRef
+                ref: audioRef,
+                onTimeUpdate: handleTimeUpdate
             }, void 0, false, {
                 fileName: "src/Presentation/ResultsContainer.jsx",
-                lineNumber: 13,
+                lineNumber: 20,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _currentLetterDefault.default), {
                 letter: selectedLetter
             }, void 0, false, {
                 fileName: "src/Presentation/ResultsContainer.jsx",
-                lineNumber: 14,
+                lineNumber: 25,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wordGridDefault.default), {
                 words: selectedLetter.words,
-                playAudio: playAudio
+                playAudio: playAudio,
+                progress: progress
             }, void 0, false, {
                 fileName: "src/Presentation/ResultsContainer.jsx",
-                lineNumber: 15,
+                lineNumber: 26,
                 columnNumber: 4
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/Presentation/ResultsContainer.jsx",
-        lineNumber: 12,
+        lineNumber: 19,
         columnNumber: 3
     }, this);
 }
 exports.default = ResultsContainer;
-_s(ResultsContainer, "0sm4EU6wFifmHvgu8ujVUSp82DM=");
+_s(ResultsContainer, "k8kKHthu+77PZDATXF0OyTgkaZA=");
 _c = ResultsContainer;
 var _c;
 $RefreshReg$(_c, "ResultsContainer");
@@ -33942,11 +33952,12 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _wordCard = require("./WordCard");
 var _wordCardDefault = parcelHelpers.interopDefault(_wordCard);
-function WordGrid({ words , playAudio  }) {
+function WordGrid({ words , playAudio , progress  }) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "word-grid",
         children: words.nodes.map((word)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wordCardDefault.default), {
-                word: word.title,
+                progress: progress,
+                word: word,
                 fields: word.words_fields,
                 playAudio: playAudio
             }, word.wordId, false, {
@@ -33980,10 +33991,11 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-function WordCard({ word , fields , playAudio  }) {
-    console.log("rendered");
+function WordCard({ word , fields , playAudio , progress  }) {
+    console.log(word);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "word-card",
+        id: word.wordId,
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "word-card__text",
@@ -33991,7 +34003,7 @@ function WordCard({ word , fields , playAudio  }) {
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                         className: "word-card__text--title",
                         children: [
-                            word,
+                            word.title,
                             fields.partOfLanguage && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                 className: "word-card__text--part-of-language",
                                 children: [

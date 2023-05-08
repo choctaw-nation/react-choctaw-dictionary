@@ -29,7 +29,6 @@ const query = {
             exampleSentenceTranslation
             partOfLanguage
             pronunciation
-            wordId
           }
         }
       }

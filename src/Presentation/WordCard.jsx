@@ -1,10 +1,10 @@
-export default function WordCard({ word, fields, playAudio }) {
-	console.log('rendered');
+export default function WordCard({ word, fields, playAudio, progress }) {
+	console.log(word);
 	return (
-		<div className="word-card">
+		<div className="word-card" id={word.wordId}>
 			<div className="word-card__text">
 				<h2 className="word-card__text--title">
-					{word}
+					{word.title}
 					{fields.partOfLanguage && (
 						<span className="word-card__text--part-of-language">
 							{' '}
