@@ -1,20 +1,21 @@
+export type Words_Fields = {
+	audioFile?: {
+		mediaItemUrl: string;
+	};
+	definitions: [
+		{
+			definition: string;
+		},
+	];
+	exampleSentence?: string;
+	exampleSentenceTranslation?: string;
+	partOfLanguage?: string;
+	pronunciation?: string;
+};
 export type Word = {
 	wordId: number;
 	title: string;
-	words_fields: {
-		audioFile?: {
-			mediaItemUrl: string;
-		};
-		definitions: [
-			{
-				definition: string;
-			},
-		];
-		exampleSentence?: string;
-		exampleSentenceTranslation?: string;
-		partofLanguage?: string;
-		pronunciation?: string;
-	};
+	words_fields: Words_Fields;
 };
 export type WordEdge = {
 	cursor: string;

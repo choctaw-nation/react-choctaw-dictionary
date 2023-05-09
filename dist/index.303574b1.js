@@ -34047,7 +34047,7 @@ var _playSvgDefault = parcelHelpers.interopDefault(_playSvg);
 function WordCard({ word , fields , playAudio , progress  }) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "word-card",
-        id: word.wordId,
+        id: `${word.wordId}`,
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "word-card__text",
@@ -34066,13 +34066,13 @@ function WordCard({ word , fields , playAudio , progress  }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Presentation/WordCard.tsx",
-                                lineNumber: 10,
+                                lineNumber: 22,
                                 columnNumber: 7
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/Presentation/WordCard.tsx",
-                        lineNumber: 7,
+                        lineNumber: 19,
                         columnNumber: 5
                     }, this),
                     fields.definitions && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -34080,13 +34080,13 @@ function WordCard({ word , fields , playAudio , progress  }) {
                         children: fields.definitions[0].definition
                     }, void 0, false, {
                         fileName: "src/Presentation/WordCard.tsx",
-                        lineNumber: 17,
+                        lineNumber: 29,
                         columnNumber: 6
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/Presentation/WordCard.tsx",
-                lineNumber: 6,
+                lineNumber: 18,
                 columnNumber: 4
             }, this),
             fields.audioFile && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -34105,23 +34105,23 @@ function WordCard({ word , fields , playAudio , progress  }) {
                         }
                     }, void 0, false, {
                         fileName: "src/Presentation/WordCard.tsx",
-                        lineNumber: 31,
+                        lineNumber: 43,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "src/Presentation/WordCard.tsx",
-                    lineNumber: 24,
+                    lineNumber: 36,
                     columnNumber: 6
                 }, this)
             }, void 0, false, {
                 fileName: "src/Presentation/WordCard.tsx",
-                lineNumber: 23,
+                lineNumber: 35,
                 columnNumber: 5
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/Presentation/WordCard.tsx",
-        lineNumber: 5,
+        lineNumber: 17,
         columnNumber: 3
     }, this);
 }

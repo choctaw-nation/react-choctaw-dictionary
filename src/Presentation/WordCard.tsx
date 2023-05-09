@@ -1,8 +1,20 @@
 import React from 'react';
 import PlayIcon from 'bundle-text:@fortawesome/fontawesome-free/svgs/solid/play.svg';
-export default function WordCard({ word, fields, playAudio, progress }) {
+import { Word, Words_Fields } from '../types';
+
+export default function WordCard({
+	word,
+	fields,
+	playAudio,
+	progress,
+}: {
+	word: Word;
+	fields: Words_Fields;
+	playAudio: Function;
+	progress: number;
+}) {
 	return (
-		<div className="word-card" id={word.wordId}>
+		<div className="word-card" id={`${word.wordId}`}>
 			<div className="word-card__text">
 				<h2 className="word-card__text--title">
 					{word.title}
@@ -26,7 +38,7 @@ export default function WordCard({ word, fields, playAudio, progress }) {
 						value={fields.audioFile.mediaItemUrl}
 						className="audio-button btn btn-link"
 						onClick={() => {
-							playAudio(fields.audioFile.mediaItemUrl);
+							playAudio(fields.audioFile!.mediaItemUrl);
 						}}>
 						<div
 							className="word-card__button--icon"
