@@ -2938,91 +2938,118 @@ var _secondaryNav = require("./Presentation/SecondaryNav");
 var _resultsContainer = require("./Presentation/ResultsContainer");
 var _resultsContainerDefault = parcelHelpers.interopDefault(_resultsContainer);
 var _utils = require("./utils");
+var _loadingSpinner = require("./Presentation/LoadingSpinner");
+var _loadingSpinnerDefault = parcelHelpers.interopDefault(_loadingSpinner);
 var _s = $RefreshSig$();
 function App() {
     _s();
     const [isLoading, setIsLoading] = (0, _react.useState)(true);
-    const [data, setData] = (0, _react.useState)({
-        firstLetters: {
-            nodes: []
-        }
-    });
+    const [data, setData] = (0, _react.useState)([]);
     const [alphabet, setAlphabet] = (0, _react.useState)(null);
     const [selectedLetter, setSelectedLetter] = (0, _react.useState)();
+    const [search, setSearch] = (0, _react.useState)("");
     (0, _react.useEffect)(()=>{
-        const controller = new AbortController();
-        const signal = controller.signal;
-        const timeout = setTimeout(()=>{
-            controller.abort();
-            console.warn("Request timed out");
-        }, 10000);
-        fetch("https://choctawlangstg.wpengine.com/graphql", {
-            method: "Post",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify((0, _utils.query)),
-            signal: signal
-        }).then((data)=>{
-            clearTimeout(timeout);
-            data.json().then((body)=>{
-                setData(body.data);
-                setSelectedLetter(body.data.firstLetters.nodes[0]);
-                setAlphabet(body.data.firstLetters.nodes.filter((node)=>{
-                    return null !== node.count;
-                }).map((node)=>node.name));
-                setIsLoading(false);
-            });
-        }).catch((err)=>console.error(err));
-    }, []);
+        if ("" === search) {
+            const controller = new AbortController();
+            const signal = controller.signal;
+            const timeout = setTimeout(()=>{
+                controller.abort();
+                console.warn("Request timed out");
+            }, 10000);
+            fetch("https://choctawlangstg.wpengine.com/graphql", {
+                method: "Post",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify((0, _utils.query)),
+                signal: signal
+            }).then((data)=>{
+                clearTimeout(timeout);
+                data.json().then((body)=>{
+                    setData(body.data.firstLetters);
+                    setSelectedLetter(body.data.firstLetters.nodes[0]);
+                    setAlphabet(body.data.firstLetters.nodes.filter((node)=>{
+                        return null !== node.count;
+                    }).map((node)=>node.name));
+                    setIsLoading(false);
+                });
+            }).catch((err)=>console.error(err));
+        }
+    }, [
+        search
+    ]);
+    function handleSearchInput({ target  }) {
+        setSearch(target.value);
+    }
+    // useEffect(() => {
+    // 	if ('' === search) return;
+    // 	setIsLoading(true);
+    // 	const timeout = setTimeout(() => {
+    // 		const fuse = new Fuse(data, {
+    // 			...fuzzySearchKeys,
+    // 		});
+    // 		// console.log(`Search Terms: ${search}`);
+    // 		const results = fuse.search(search);
+    // 		// console.log(results);
+    // 		setData(results.map((result) => result.item));
+    // 		setIsLoading(false);
+    // 	}, 500);
+    // 	return () => clearTimeout(timeout);
+    // }, [search]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _header.Header), {}, void 0, false, {
                 fileName: "src/app.tsx",
-                lineNumber: 53,
+                lineNumber: 78,
                 columnNumber: 4
             }, this),
             !isLoading && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _secondaryNav.SecondaryNav), {
                 selectedLetter: selectedLetter,
                 setSelectedLetter: setSelectedLetter,
                 data: data,
-                alphabet: alphabet
+                search: search,
+                alphabet: alphabet,
+                handleSearchInput: handleSearchInput
             }, void 0, false, {
                 fileName: "src/app.tsx",
-                lineNumber: 55,
+                lineNumber: 80,
                 columnNumber: 5
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "container",
-                children: isLoading ? "Loading..." : selectedLetter && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _resultsContainerDefault.default), {
+                children: isLoading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loadingSpinnerDefault.default), {}, void 0, false, {
+                    fileName: "src/app.tsx",
+                    lineNumber: 91,
+                    columnNumber: 6
+                }, this) : selectedLetter && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _resultsContainerDefault.default), {
                     selectedLetter: selectedLetter
                 }, void 0, false, {
                     fileName: "src/app.tsx",
-                    lineNumber: 66,
-                    columnNumber: 8
+                    lineNumber: 93,
+                    columnNumber: 24
                 }, this)
             }, void 0, false, {
                 fileName: "src/app.tsx",
-                lineNumber: 62,
+                lineNumber: 89,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footer.Footer), {}, void 0, false, {
                 fileName: "src/app.tsx",
-                lineNumber: 69,
+                lineNumber: 96,
                 columnNumber: 4
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/app.tsx",
-        lineNumber: 52,
+        lineNumber: 77,
         columnNumber: 3
     }, this);
 }
-_s(App, "GNbwnrELcU4RuHGyIPn0hA6pDoM=");
+_s(App, "NLzmy0Z/xl3DG8iLA3z6mmjYwCs=");
 _c = App;
 (0, _client.createRoot)(document.getElementById("app")).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/app.tsx",
-    lineNumber: 74,
+    lineNumber: 101,
     columnNumber: 51
 }, undefined));
 var _c;
@@ -3033,7 +3060,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./styles/main.scss":"bo7w8","bootstrap/dist/css/bootstrap.min.css":"i5LP7","bootstrap/dist/js/bootstrap":"9AxfY","react":"21dqq","react-dom/client":"lOjBx","./Presentation/Footer":"hj1Qp","./Presentation/Header":"4Jgem","./Presentation/SecondaryNav":"cW8XO","./Presentation/ResultsContainer":"lbfcH","./utils":"en4he","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","./styles/main.scss":"bo7w8","bootstrap/dist/css/bootstrap.min.css":"i5LP7","bootstrap/dist/js/bootstrap":"9AxfY","react":"21dqq","react-dom/client":"lOjBx","./Presentation/Footer":"hj1Qp","./Presentation/Header":"4Jgem","./Presentation/SecondaryNav":"cW8XO","./Presentation/ResultsContainer":"lbfcH","./utils":"en4he","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Presentation/LoadingSpinner":"eyu9H"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("5185e67b466eae4e");
 
@@ -33427,15 +33454,18 @@ var _alphabet = require("../Components/Alphabet");
 var _colorToggle = require("../Components/ColorToggle");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-function SecondaryNav({ alphabet , selectedLetter , setSelectedLetter , data  }) {
+function SecondaryNav({ alphabet , selectedLetter , setSelectedLetter , data , handleSearchInput , search  }) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "secondary-nav container-fluid pt-3",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "row",
             children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _searchBar.SearchBar), {}, void 0, false, {
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _searchBar.SearchBar), {
+                    search: search,
+                    handleSearchInput: handleSearchInput
+                }, void 0, false, {
                     fileName: "src/Presentation/SecondaryNav.tsx",
-                    lineNumber: 15,
+                    lineNumber: 17,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _alphabet.AlphabetMenu), {
@@ -33445,23 +33475,23 @@ function SecondaryNav({ alphabet , selectedLetter , setSelectedLetter , data  })
                     data: data
                 }, void 0, false, {
                     fileName: "src/Presentation/SecondaryNav.tsx",
-                    lineNumber: 16,
+                    lineNumber: 18,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colorToggle.ColorThemeToggle), {}, void 0, false, {
                     fileName: "src/Presentation/SecondaryNav.tsx",
-                    lineNumber: 22,
+                    lineNumber: 24,
                     columnNumber: 5
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/Presentation/SecondaryNav.tsx",
-            lineNumber: 14,
+            lineNumber: 16,
             columnNumber: 4
         }, this)
     }, void 0, false, {
         fileName: "src/Presentation/SecondaryNav.tsx",
-        lineNumber: 13,
+        lineNumber: 15,
         columnNumber: 3
     }, this);
 }
@@ -33494,7 +33524,7 @@ const characters = [
     "o̱",
     "ʋ"
 ];
-function SearchBar() {
+function SearchBar({ handleSearchInput , search  }) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
         className: "search-form",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -33507,15 +33537,17 @@ function SearchBar() {
                         placeholder: "Search",
                         type: "text",
                         name: "_sf_search[]",
-                        className: "sf-input-text"
+                        className: "sf-input-text",
+                        onChange: handleSearchInput,
+                        value: search
                     }, void 0, false, {
                         fileName: "src/Components/SearchBar.tsx",
-                        lineNumber: 14,
+                        lineNumber: 11,
                         columnNumber: 6
                     }, this)
                 }, void 0, false, {
                     fileName: "src/Components/SearchBar.tsx",
-                    lineNumber: 13,
+                    lineNumber: 10,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -33529,17 +33561,17 @@ function SearchBar() {
                             children: "Reset"
                         }, void 0, false, {
                             fileName: "src/Components/SearchBar.tsx",
-                            lineNumber: 23,
+                            lineNumber: 22,
                             columnNumber: 7
                         }, this)
                     }, void 0, false, {
                         fileName: "src/Components/SearchBar.tsx",
-                        lineNumber: 22,
+                        lineNumber: 21,
                         columnNumber: 6
                     }, this)
                 }, void 0, false, {
                     fileName: "src/Components/SearchBar.tsx",
-                    lineNumber: 21,
+                    lineNumber: 20,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -33555,36 +33587,36 @@ function SearchBar() {
                                 className: "fas fa-info fa-sm"
                             }, void 0, false, {
                                 fileName: "src/Components/SearchBar.tsx",
-                                lineNumber: 35,
+                                lineNumber: 34,
                                 columnNumber: 7
                             }, this)
                         }, void 0, false, {
                             fileName: "src/Components/SearchBar.tsx",
-                            lineNumber: 29,
+                            lineNumber: 28,
                             columnNumber: 6
                         }, this),
                         characters.map((character)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _specialCharacterButtons.SpecialCharacter), {
                                 character: character
                             }, character, false, {
                                 fileName: "src/Components/SearchBar.tsx",
-                                lineNumber: 38,
+                                lineNumber: 37,
                                 columnNumber: 7
                             }, this))
                     ]
                 }, void 0, true, {
                     fileName: "src/Components/SearchBar.tsx",
-                    lineNumber: 28,
+                    lineNumber: 27,
                     columnNumber: 5
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/Components/SearchBar.tsx",
-            lineNumber: 12,
+            lineNumber: 9,
             columnNumber: 4
         }, this)
     }, void 0, false, {
         fileName: "src/Components/SearchBar.tsx",
-        lineNumber: 11,
+        lineNumber: 8,
         columnNumber: 3
     }, this);
 }
@@ -33879,9 +33911,7 @@ function ResultsContainer({ selectedLetter  }) {
             audioRef.current.play();
         }
     }
-    (0, _react.useEffect)(()=>console.log(progress), [
-        progress
-    ]);
+    // useEffect(() => console.log(progress), [progress]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "results",
         children: [
@@ -33919,7 +33949,7 @@ function ResultsContainer({ selectedLetter  }) {
     }, this);
 }
 exports.default = ResultsContainer;
-_s(ResultsContainer, "k8kKHthu+77PZDATXF0OyTgkaZA=");
+_s(ResultsContainer, "egbQ9U+rtdgtQRcHinD42LaDKFY=");
 _c = ResultsContainer;
 var _c;
 $RefreshReg$(_c, "ResultsContainer");
@@ -34001,7 +34031,6 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _wordCard = require("./WordCard");
 var _wordCardDefault = parcelHelpers.interopDefault(_wordCard);
 function WordGrid({ words , playAudio , progress  }) {
-    console.log(words);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "word-grid",
         children: words.edges.map(({ node: word  })=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wordCardDefault.default), {
@@ -34011,12 +34040,12 @@ function WordGrid({ words , playAudio , progress  }) {
                 playAudio: playAudio
             }, word.wordId, false, {
                 fileName: "src/Presentation/WordGrid.tsx",
-                lineNumber: 18,
+                lineNumber: 17,
                 columnNumber: 5
             }, this))
     }, void 0, false, {
         fileName: "src/Presentation/WordGrid.tsx",
-        lineNumber: 16,
+        lineNumber: 15,
         columnNumber: 3
     }, this);
 }
@@ -34138,6 +34167,49 @@ $RefreshReg$(_c, "WordCard");
 },{"react/jsx-dev-runtime":"iTorj","bundle-text:@fortawesome/fontawesome-free/svgs/solid/play.svg":"4QMr9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq"}],"4QMr9":[function(require,module,exports) {
 module.exports = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 384 512\"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --><path d=\"M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z\"></path></svg>";
 
-},{}]},["1xC6H","fkBcD","41oNQ"], "41oNQ", "parcelRequire79d6")
+},{}],"eyu9H":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$320f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$320f.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _loadingSpinnerScss = require("../styles/components/loading-spinner.scss");
+function LoadingSpinner() {
+    const divs = [
+        1,
+        2,
+        3,
+        4
+    ];
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "lds-ring",
+        children: divs.map((el, i)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {}, i, false, {
+                fileName: "src/Presentation/LoadingSpinner.tsx",
+                lineNumber: 8,
+                columnNumber: 5
+            }, this))
+    }, void 0, false, {
+        fileName: "src/Presentation/LoadingSpinner.tsx",
+        lineNumber: 6,
+        columnNumber: 3
+    }, this);
+}
+exports.default = LoadingSpinner;
+_c = LoadingSpinner;
+var _c;
+$RefreshReg$(_c, "LoadingSpinner");
+
+  $parcel$ReactRefreshHelpers$320f.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../styles/components/loading-spinner.scss":"7Hc2k","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"7Hc2k":[function() {},{}]},["1xC6H","fkBcD","41oNQ"], "41oNQ", "parcelRequire79d6")
 
 //# sourceMappingURL=index.303574b1.js.map

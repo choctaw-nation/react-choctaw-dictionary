@@ -11,7 +11,6 @@ export default function WordGrid({
 	playAudio: Function;
 	progress: number;
 }) {
-	console.log(words);
 	return (
 		<div className="word-grid">
 			{words.edges.map(({ node: word }: { node: Word }) => (

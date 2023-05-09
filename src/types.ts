@@ -34,3 +34,6 @@ export type FirstLetter = {
 	words: Words;
 	count: number;
 };
+export type WP_Response = {
+	firstLetters: { nodes: FirstLetter[] };
+};

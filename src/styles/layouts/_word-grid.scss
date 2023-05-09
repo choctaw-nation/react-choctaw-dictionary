@@ -1,6 +1,7 @@
 .word-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, max(42rem));
+	justify-content: center;
 	gap: 2rem;
 	margin: 4rem 0;
 }

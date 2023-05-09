@@ -26,7 +26,7 @@ export default function ResultsContainer({
 			audioRef.current.play();
 		}
 	}
-	useEffect(() => console.log(progress), [progress]);
+	// useEffect(() => console.log(progress), [progress]);
 	return (
 		<div className="results">
 			<audio

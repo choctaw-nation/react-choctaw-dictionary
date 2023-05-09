@@ -1,12 +1,9 @@
 import React from 'react';
-import {
-	FirstLetter,
-	SpecialCharacter,
-} from '../Presentation/SpecialCharacterButtons';
+import { SpecialCharacter } from '../Presentation/SpecialCharacterButtons';
 
 const characters = ['a̱', 'i̱', 'o̱', 'ʋ'];
 
-export function SearchBar() {
+export function SearchBar({ handleSearchInput, search }) {
 	return (
 		<form className="search-form">
 			<ul className="search-items">
@@ -16,6 +13,8 @@ export function SearchBar() {
 						type="text"
 						name="_sf_search[]"
 						className="sf-input-text"
+						onChange={handleSearchInput}
+						value={search}
 					/>
 				</li>
 				<li className="sf-reset-button">

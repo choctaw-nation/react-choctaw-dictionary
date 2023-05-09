@@ -8,11 +8,13 @@ export function SecondaryNav({
 	selectedLetter,
 	setSelectedLetter,
 	data,
+	handleSearchInput,
+	search,
 }) {
 	return (
 		<div className="secondary-nav container-fluid pt-3">
 			<div className="row">
-				<SearchBar />
+				<SearchBar search={search} handleSearchInput={handleSearchInput} />
 				<AlphabetMenu
 					alphabet={alphabet}
 					selectedLetter={selectedLetter}
