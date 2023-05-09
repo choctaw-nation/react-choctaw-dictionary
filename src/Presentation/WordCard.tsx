@@ -1,5 +1,6 @@
+import React from 'react';
+import PlayIcon from 'bundle-text:@fortawesome/fontawesome-free/svgs/solid/play.svg';
 export default function WordCard({ word, fields, playAudio, progress }) {
-	console.log(word);
 	return (
 		<div className="word-card" id={word.wordId}>
 			<div className="word-card__text">
@@ -27,8 +28,9 @@ export default function WordCard({ word, fields, playAudio, progress }) {
 						onClick={() => {
 							playAudio(fields.audioFile.mediaItemUrl);
 						}}>
-						Play
-						<i className="fas fa-play-circle fa-3x"></i>
+						<div
+							className="word-card__button--icon"
+							dangerouslySetInnerHTML={{ __html: PlayIcon }}></div>
 					</button>
 				</div>
 			)}

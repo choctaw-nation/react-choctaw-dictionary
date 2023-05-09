@@ -1,9 +1,11 @@
+import React from 'react';
+
 export function Modal() {
 	return (
 		<div
 			className="modal fade"
 			id="infoModal"
-			tabindex="-1"
+			tabIndex={-1}
 			aria-labelledby="infoModalLabel"
 			aria-hidden="true">
 			<div className="modal-dialog modal-dialog-centered">

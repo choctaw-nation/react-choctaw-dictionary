@@ -1,6 +1,7 @@
 import { SearchBar } from '../Components/SearchBar';
 import { AlphabetMenu } from '../Components/Alphabet';
 import { ColorThemeToggle } from '../Components/ColorToggle';
+import React from 'react';
 
 export function SecondaryNav({
 	alphabet,

@@ -1,3 +1,5 @@
+import React from 'react';
+
 export function ColorThemeToggle() {
 	return (
 		<div className="color-theme-toggle">

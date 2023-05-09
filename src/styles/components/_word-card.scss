@@ -1,4 +1,5 @@
 @use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
 .word-card {
 	border-radius: 2.5rem;
 	background-color: white;
@@ -30,5 +31,17 @@
 		justify-content: center;
 		color: v.$color-primary;
 		grid-column: 2 / 3;
+		&--icon {
+			@include m.fitMedia(svg);
+			@include m.displayFlex(column, center, center);
+			background-color: v.$color-primary;
+			width: 5rem;
+			height: 5rem;
+			padding: 1rem;
+			border-radius: 50%;
+			svg {
+				fill: white;
+			}
+		}
 	}
 }

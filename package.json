@@ -2,7 +2,7 @@
   "name": "react-dictionary",
   "version": "1.0.0",
   "description": "",
-  "browserlist": "> 0.5%, last 2 versions, not dead",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html"
@@ -14,10 +14,14 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "bootstrap": "^5.2.3",
     "@fortawesome/fontawesome-free": "^6.4.0",
+    "@parcel/transformer-inline-string": "^2.8.3",
     "@parcel/transformer-sass": "^2.8.3",
+    "@parcel/transformer-svg-react": "^2.8.3",
+    "@types/react": "^18.2.6",
+    "bootstrap": "^5.2.3",
     "parcel": "^2.8.3",
+    "parcel-plugin-svg-react": "^1.0.4",
     "process": "^0.11.10"
   }
 }

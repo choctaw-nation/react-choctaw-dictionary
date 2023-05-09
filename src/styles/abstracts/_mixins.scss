@@ -1,0 +1,48 @@
+@use './functions' as fn;
+@use './variables' as v;
+@mixin displayFlex(
+	$direction: row,
+	$main: flex-start,
+	$cross: flex-start,
+	$wrap: wrap
+) {
+	display: flex;
+	flex-direction: $direction;
+	flex-wrap: $wrap;
+	justify-content: $main;
+	align-items: $cross;
+}
+
+@mixin dropShadow($color: black) {
+	box-shadow: 2px 4px 8px rgba($color, 0.35);
+}
+
+@mixin fitMedia($selector: img, $fit: cover, $position: center) {
+	#{$selector} {
+		width: 100%;
+		height: 100%;
+		object-fit: $fit;
+		object-position: $position;
+	}
+}
+
+@mixin darkMode() {
+	@media (prefers-color-scheme: dark) {
+		@content;
+	}
+}
+
+@mixin anchorHoverState($height: 3px, $width: 50%, $color: v.$color-primary) {
+	&:after {
+		content: '';
+		transition: fn.transition(transform);
+		height: $height;
+		transform: scaleX(0);
+		background-color: $color;
+		position: absolute;
+		left: 0;
+		bottom: -0.5rem;
+		transform-origin: 0 0;
+		width: $width;
+	}
+}

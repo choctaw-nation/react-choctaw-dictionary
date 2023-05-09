@@ -1,3 +1,5 @@
+import React from 'react';
+
 export function SpecialCharacter({ character }) {
 	return (
 		<button

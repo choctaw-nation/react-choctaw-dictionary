@@ -1,3 +1,4 @@
+import React from 'react';
 import {
 	FirstLetter,
 	SpecialCharacter,
@@ -5,7 +6,7 @@ import {
 
 const characters = ['a̱', 'i̱', 'o̱', 'ʋ'];
 
-export function SearchBar({ alphabet }) {
+export function SearchBar() {
 	return (
 		<form className="search-form">
 			<ul className="search-items">
