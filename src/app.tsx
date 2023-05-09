@@ -88,7 +88,9 @@ function App() {
 			)}
 			<div className="container">
 				{isLoading ? (
-					<LoadingSpinner />
+					<div className="text-center mt-5 pt-5">
+						<LoadingSpinner />
+					</div>
 				) : (
 					selectedLetter && <ResultsContainer selectedLetter={selectedLetter} />
 				)}

@@ -6,6 +6,7 @@ export function AlphabetMenu({
 	setSelectedLetter,
 	data,
 }) {
+	console.log(data);
 	return (
 		<div className="menu-alphabet-container">
 			<h2 className="text-center">Search by First Letter</h2>
@@ -16,7 +17,7 @@ export function AlphabetMenu({
 						className={letter === selectedLetter.name ? 'selected' : ''}>
 						<button
 							onClick={() => {
-								const choice = data.firstLetters.nodes.filter(
+								const choice = data.nodes.filter(
 									(node) => letter === node.name,
 								);
 								setSelectedLetter(choice[0]);

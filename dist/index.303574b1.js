@@ -3017,7 +3017,14 @@ function App() {
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "container",
-                children: isLoading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loadingSpinnerDefault.default), {}, void 0, false, {
+                children: isLoading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "text-center mt-5 pt-5",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loadingSpinnerDefault.default), {}, void 0, false, {
+                        fileName: "src/app.tsx",
+                        lineNumber: 92,
+                        columnNumber: 7
+                    }, this)
+                }, void 0, false, {
                     fileName: "src/app.tsx",
                     lineNumber: 91,
                     columnNumber: 6
@@ -3025,7 +3032,7 @@ function App() {
                     selectedLetter: selectedLetter
                 }, void 0, false, {
                     fileName: "src/app.tsx",
-                    lineNumber: 93,
+                    lineNumber: 95,
                     columnNumber: 24
                 }, this)
             }, void 0, false, {
@@ -3035,7 +3042,7 @@ function App() {
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footer.Footer), {}, void 0, false, {
                 fileName: "src/app.tsx",
-                lineNumber: 96,
+                lineNumber: 98,
                 columnNumber: 4
             }, this)
         ]
@@ -3049,7 +3056,7 @@ _s(App, "NLzmy0Z/xl3DG8iLA3z6mmjYwCs=");
 _c = App;
 (0, _client.createRoot)(document.getElementById("app")).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/app.tsx",
-    lineNumber: 101,
+    lineNumber: 103,
     columnNumber: 51
 }, undefined));
 var _c;
@@ -33690,6 +33697,7 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 function AlphabetMenu({ alphabet , selectedLetter , setSelectedLetter , data  }) {
+    console.log(data);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "menu-alphabet-container",
         children: [
@@ -33698,7 +33706,7 @@ function AlphabetMenu({ alphabet , selectedLetter , setSelectedLetter , data  })
                 children: "Search by First Letter"
             }, void 0, false, {
                 fileName: "src/Components/Alphabet.tsx",
-                lineNumber: 11,
+                lineNumber: 12,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -33708,29 +33716,29 @@ function AlphabetMenu({ alphabet , selectedLetter , setSelectedLetter , data  })
                         className: letter === selectedLetter.name ? "selected" : "",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                             onClick: ()=>{
-                                const choice = data.firstLetters.nodes.filter((node)=>letter === node.name);
+                                const choice = data.nodes.filter((node)=>letter === node.name);
                                 setSelectedLetter(choice[0]);
                             },
                             children: letter
                         }, void 0, false, {
                             fileName: "src/Components/Alphabet.tsx",
-                            lineNumber: 17,
+                            lineNumber: 18,
                             columnNumber: 7
                         }, this)
                     }, letter, false, {
                         fileName: "src/Components/Alphabet.tsx",
-                        lineNumber: 14,
+                        lineNumber: 15,
                         columnNumber: 6
                     }, this))
             }, void 0, false, {
                 fileName: "src/Components/Alphabet.tsx",
-                lineNumber: 12,
+                lineNumber: 13,
                 columnNumber: 4
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/Components/Alphabet.tsx",
-        lineNumber: 10,
+        lineNumber: 11,
         columnNumber: 3
     }, this);
 }
